@@ -2,8 +2,13 @@
 @import './styles/variables';
 @import './styles/mixins.scss';
 @import './styles/buttons.scss';
+@import './styles/misc.scss';
+
+// General style
+@import './styles/general.scss';
+@import './styles/typography.scss';
 
 // Components
+@import './styles/header.scss';
 @import './styles/footer.scss';
-
-
+@import './styles/sidebar-and-main-panel.scss';
