@@ -1,11 +1,60 @@
 <template>
     <div>
-        Company Data
+        <dashboard-card :cardClasses="['small']">
+            <div slot="header">
+                <h4 class="card-title">{{ pageTitle }}</h4>
+                <button type="success" class="btn btn-primary btn-common btn-round pull-right">
+                    <i class="now-ui-icons ui-1_check"></i>
+                    Save
+                </button>
+            </div>
+            <div>
+                <form method="get" action="/" class="form-horizontal">
+                    <div class="form-wrapper row">
+                        <div class="width-1">
+                            <label class="col-form-label">Company Name</label>
+                            <input name="name" type="name" value="" class="form-element width-fill">
+                        </div>
+                    </div> 
+                    <div class="form-wrapper row">
+                        <div class="width-2">    
+                            <label class="col-form-label">Company Spend Ability</label>
+                        </div>
+                    </div>
+                    <div class="form-wrapper row">
+                        <div class="width-2">
+                            <label class="col-form-label">Minimum Spend</label>
+                            <input name="name" type="name" value="" class="form-element width-fill">
+                        </div>
+                        <div class="width-2">
+                            <label class="col-form-label">Maximum Spend</label>
+                            <input name="name" type="name" value="" class="form-element width-fill">
+                        </div>
+                    </div>    
+                    <div class="form-wrapper row">
+                        <div class="width-1">
+                            <label class="col-form-label">Additional Notes</label>
+                            <input name="name" type="name" value="" class="form-element width-fill">
+                        </div>
+                    </div>            
+                </form>
+            </div>
+        </dashboard-card>
     </div>
 </template>
 <script>
+    import DashboardCard from './ui/DashboardCard.vue';
+
     export default {
-        name: "company-data"     
+        name: "company-data",
+        components: {
+            DashboardCard
+        },
+        data() {
+            return {
+                pageTitle: 'Company Data'
+            }
+        }
     };
 </script>
 <style>

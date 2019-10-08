@@ -1,0 +1,25 @@
+.form-element {
+  background-color: $transparent-bg;
+  border: 1px solid $medium-gray;
+  border-radius: $btn-round-radius;
+  color: $black-color;
+  line-height: normal;
+  font-size: $font-size-small;
+  min-height: 33px;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  &:focus{
+    border: 1px solid $primary-color;
+    @include box-shadow(none);
+    outline: 0 !important;
+    color: $black-color;
+
+    & + .input-group-addon,
+    & ~ .input-group-addon{
+      border: 1px solid $primary-color;
+      border-left: none;
+      background-color: $transparent-bg;
+    }
+  }
+}

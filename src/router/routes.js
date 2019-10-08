@@ -68,7 +68,7 @@ let dashboardPages = {
             name: 'dashboard',
             meta: {title: 'Company Data'},
             components: {
-                default: Dashboard,
+                default: CompanyData,
                 header: DashboardHeader
             }
         },

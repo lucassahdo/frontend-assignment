@@ -1,3 +1,45 @@
 body {
   margin: 0 !important;
 }
+
+ul {
+  padding: 0;
+}
+
+li {
+  padding: 0;
+}
+
+.small-wrapper {
+  display: block;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.width-fill {
+  width: $width-fill;
+}
+
+.form-wrapper {
+  margin: 15px 0;
+}
+
+.row {
+  display: flex;
+}
+
+.width-1,
+.width-2  {
+  float: left;
+  position: relative;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.width-1 {
+  width: 100%;
+}
+
+.width-2 {
+  width: 50%;
+}

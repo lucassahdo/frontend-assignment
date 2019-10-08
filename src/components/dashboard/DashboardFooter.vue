@@ -1,17 +1,8 @@
 <template>
   <footer class="footer footer-default">
-    <div class="container-fluid d-flex flex-wrap justify-content-between">
-      <nav>
-        <ul class="footer-menu">
-          <li>
-            <router-link :to="{path:'/dashboard'}">Dashboard</router-link>
-          </li>
-        </ul>
-      </nav>
-      <div class="copyright">
-        &copy; {{year}}, Designed and coded by
-        <a href="https://sahdo.me" target="_blanck">Sahdo.me</a>.
-      </div>
+    <div class="copyright">
+      &copy; {{year}}, Designed and coded with <span class="heart"> love S2</span> by
+      <a href="http://sahdo.me" target="_blanck">Sahdo.me</a>.
     </div>
   </footer>
 </template>
