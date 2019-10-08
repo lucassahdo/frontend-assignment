@@ -13,11 +13,12 @@
                     <div class="form-wrapper row">
                         <div class="width-1">
                             <label class="col-form-label">Company Name</label>
-                            <input name="name" type="name" value="" class="form-element width-fill">
+                            <input name="name" type="name" v-model="name" class="form-element width-fill">
+                            <div class="error" v-if="!$v.name.required">Field is required</div>
                         </div>
-                    </div> 
+                    </div>
                     <div class="form-wrapper row">
-                        <div class="width-2">    
+                        <div class="width-2">
                             <label class="col-form-label">Company Spend Ability</label>
                         </div>
                     </div>
@@ -30,13 +31,13 @@
                             <label class="col-form-label">Maximum Spend</label>
                             <input name="name" type="name" value="" class="form-element width-fill">
                         </div>
-                    </div>    
+                    </div>
                     <div class="form-wrapper row">
                         <div class="width-1">
                             <label class="col-form-label">Additional Notes</label>
                             <input name="name" type="name" value="" class="form-element width-fill">
                         </div>
-                    </div>            
+                    </div>
                 </form>
             </div>
         </dashboard-card>
@@ -44,6 +45,11 @@
 </template>
 <script>
     import DashboardCard from './ui/DashboardCard.vue';
+    import {
+        required,
+        minLength,
+        between
+    } from 'vuelidate/lib/validators'
 
     export default {
         name: "company-data",
@@ -52,9 +58,17 @@
         },
         data() {
             return {
-                pageTitle: 'Company Data'
+                pageTitle: 'Company Data',
+                name: ''
+            }
+        },
+        validations: {
+            name: {
+                required,
+                minLength: minLength(1)
             }
         }
+
     };
 </script>
 <style>
