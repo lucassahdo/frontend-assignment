@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://intricately-api.sahdo.in/';
+axios.defaults.baseURL = 'http://intricately-api.sahdo.me/';
 
 Vue.use(axios);
 
