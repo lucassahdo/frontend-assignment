@@ -4,17 +4,27 @@ import Vue from 'vue';
 import './styles/dashboard/main.scss';
 // router
 import router from './router/router';
-// vue validate
-import Vuelidate from 'vuelidate'
 
-Vue.use(Vuelidate);
+// Plugins
+import './plugins/axios';
+import loading from './plugins/loading';
+import vuelidate from './plugins/vuelidate';
+
+// State
+import store from './store/store';
+
+// Mixins
+import helper from './mixins/helperMixin';
+Vue.mixin(helper);
 
 // main component
 import App from './App.vue';
 
 new Vue({
   el: '#app',
-  // store,
+  store,
   render: h => h(App),
-  router
+  router,
+  loading,
+  vuelidate
 });

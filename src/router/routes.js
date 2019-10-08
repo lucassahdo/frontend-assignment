@@ -17,6 +17,7 @@ import DashboardHeader from './../components/dashboard/DashboardHeader.vue';
 import Dashboard from './../components/dashboard/Dashboard.vue';
 import CompanyData from './../components/dashboard/CompanyData.vue';
 import CompanyPage from './../components/dashboard/CompanyPage.vue';
+import Extra from './../components/dashboard/Extra.vue';
 
 // let authPages = {
 //     path: '/',
@@ -87,6 +88,15 @@ let dashboardPages = {
             meta: {title: 'Company page'},
             components: {
                 default: CompanyPage,
+                header: DashboardHeader
+            }
+        },
+        {
+            path: 'extra',
+            name: 'extra',
+            meta: {title: 'Extra'},
+            components: {
+                default: Extra,
                 header: DashboardHeader
             }
         }

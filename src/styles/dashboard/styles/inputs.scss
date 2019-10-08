@@ -22,4 +22,8 @@
       background-color: $transparent-bg;
     }
   }
+
+  &.error {
+    border: 1px solid $danger-color;
+  }
 }

@@ -44,7 +44,8 @@ li {
   width: 50%;
 }
 
-.error {
+div.error,
+span.error {
   color: #ff3636;
   font-size: 12px;
   margin-top: 5px;

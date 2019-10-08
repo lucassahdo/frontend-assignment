@@ -23,7 +23,7 @@
 
                 <h2 class="sidebar-group-title">Settings</h2>  
                 <li>
-                    <a route-name="dashboard" @click="linkClick">     
+                    <a route-name="extra" @click="linkClick">     
                         <i :class="['icon']">></i>
                         <p>Extra</p>
                     </a>
