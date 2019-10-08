@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="company-data">
         <dashboard-card :cardClasses="['small']">
             <div slot="header">
                 <h4 class="card-title">{{ pageTitle }}</h4>
@@ -48,10 +48,7 @@
                     <div class="form-wrapper row">
                         <div class="width-1">
                             <label class="col-form-label">Additional Notes</label>
-                            <input 
-                                @click="modalAdditionalNotes" 
-                                name="additional_notes" 
-                                v-model="additional_notes"
+                            <input @click="modalAdditionalNotes" name="additional_notes" v-model="additional_notes"
                                 type="input" class="form-element width-fill">
                         </div>
                     </div>
@@ -90,7 +87,8 @@
                 max_spend: '',
                 additional_notes: '',
                 modal_additional_notes: false,
-                validate: false
+                validate: false,
+                isLoaded: false
             }
         },
         methods: {
@@ -99,6 +97,7 @@
                 this.$v.$touch();
 
                 if (!this.$v.$invalid) {
+                    this.updateData();
                     return true;
                 }
 
@@ -118,22 +117,93 @@
                 this.startLoading();
                 var that = this;
 
-                const design_id = this.$route.params.id;
                 var payload = {
-                    id: design_id
+                    token: localStorage.token
                 }
                 this.$http
-                    .get('https://jsonplaceholder.typicode.com/comments')
+                    .get('company_data', {
+                        params: payload
+                    })
                     .then(function (response) {
-                        var data = response.data;
+                        var data = response.data.data;
 
-                        console.log('data: ', data);
+                        that.name = data.company_name;
+                        that.spend = data.company_spend;
+                        that.min_spend = data.company_min_spend;
+                        that.max_spend = data.company_max_spend;
+                        that.additional_notes = data.additional_notes;
+                        that.isLoaded = true;
 
                         setTimeout(function () {
                             that.stopLoading();
                         }, 1000);
                     });
 
+            },
+            updateData() {
+                var payload = {
+                    company_name: this.name,
+                    company_spend: this.spend,
+                    company_min_spend: this.min_spend,
+                    company_max_spend: this.max_spend,
+                    additional_notes: this.additional_notes,
+                };           
+
+                var that = this;
+
+                this.startLoading();
+
+                this.$http
+                    .post('company_data', {
+                        token: localStorage.token,
+                        payload: JSON.stringify(payload)
+                    }, {
+                        useCredentails: true
+                    })
+                    .then(function (response) {
+                        that.stopLoading();
+
+                        var data = response.data;
+                        var status = (typeof data.status != 'undefined') ? data.status : 'error';
+                        var message = (typeof data.message != 'undefined') ? data.message :
+                            'Nossos serviços estão indisponíveis no momento. Tente mais tarde.';
+
+                        switch (status) {
+                            case 'ok':
+                                swal({
+                                    title: 'Done!',
+                                    text: message,
+                                    type: 'success',
+                                    showConfirmButton: false,
+                                    timer: 2000,
+                                    onClose: () => {
+                                        //that.$router.push({name: 'designs'});
+                                    }
+                                }).catch(swal.noop);
+                                break;
+                            case 'warning':
+                                swal({
+                                    title: 'Ooops!',
+                                    text: message,
+                                    type: 'warning',
+                                    confirmButtonClass: "btn btn-success"
+                                }).catch(swal.noop);
+                                break;
+                            case 'error':
+                                swal({
+                                    title: 'Ooops!',
+                                    text: message,
+                                    type: 'error',
+                                    confirmButtonClass: "btn btn-success"
+                                }).catch(swal.noop);
+                                break;
+                            default:
+                                break;
+                        }
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
             }
 
         },

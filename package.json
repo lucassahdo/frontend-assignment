@@ -73,6 +73,7 @@
     "webpack-dev-server": "^3.1.10",
     "axios": "^0.19.0",
     "particles.js": "^2.0.0",
-    "vue-loading-overlay": "^3.2.0"
+    "vue-loading-overlay": "^3.2.0",
+    "sweetalert2": "^7.0.0"
   }
 }

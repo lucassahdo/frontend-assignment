@@ -15,22 +15,22 @@
                     </a>
                 </li>
                 <li>
-                    <a route-name="company_page" @click="linkClick">     
+                    <a route-name="company_page" @click="linkClick">
                         <i :class="['icon']">></i>
                         <p>Company Page</p>
                     </a>
                 </li>
 
-                <h2 class="sidebar-group-title">Settings</h2>  
+                <h2 class="sidebar-group-title">Settings</h2>
                 <li>
-                    <a route-name="extra" @click="linkClick">     
+                    <a route-name="extra" @click="linkClick">
                         <i :class="['icon']">></i>
                         <p>Extra</p>
                     </a>
                 </li>
 
                 <li>
-                    <a route-name="dashboard" @click="linkClick">     
+                    <a @click="logOut">
                         <i :class="['icon']">></i>
                         <p>Log out</p>
                     </a>
@@ -45,13 +45,23 @@
         props: {
             logo: {
                 type: String,
-                default: 'https://assets.website-files.com/5938780be60b2223c6c362fd/5971e9b249826a6c5672a208_logo-full.svg'
+                default: 'src/images/logo.svg'
             }
         },
         methods: {
             linkClick(event) {
                 var route_name = event.currentTarget.getAttribute('route-name');
-                this.$router.push({name: route_name});
+                this.$router.push({
+                    name: route_name
+                });
+            },
+            logOut() {
+                localStorage.removeItem('logged');
+                localStorage.removeItem('token');
+
+                this.$router.push({
+                    name: 'login'
+                });
             }
         }
     };

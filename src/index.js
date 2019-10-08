@@ -17,6 +17,9 @@ import store from './store/store';
 import helper from './mixins/helperMixin';
 Vue.mixin(helper);
 
+// alerts
+global.swal = require('sweetalert2');
+
 // main component
 import App from './App.vue';
 

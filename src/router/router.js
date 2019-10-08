@@ -11,12 +11,12 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  // if (!localStorage.logged || !localStorage.token) {
-  //   if (to.name != 'login' && to.name != 'register') {
-  //     router.push({name: 'login'});
-  //     return false;
-  //   }
-  // }
+  if (!localStorage.logged || !localStorage.token) {
+    if (to.name != 'login' && to.name != 'register') {
+      router.push({name: 'login'});
+      return false;
+    }
+  }
   return next();
 })
 
