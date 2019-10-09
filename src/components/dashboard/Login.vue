@@ -90,7 +90,7 @@
                         }                        
                     })
                     .catch(function (error) {
-                        console.log(error);
+                        console.error('error: ', error);
                     });
                 
             },
@@ -119,6 +119,7 @@
 
     .login-page .card-login .logo-container {
         width: 325px;
+        max-width: 88%;
         margin: 0 auto;
         padding: 35px 15px 20px 15px;
 

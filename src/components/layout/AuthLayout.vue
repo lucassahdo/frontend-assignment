@@ -355,6 +355,7 @@
         position: relative;        
         text-align: left;        
         width: 432.5px;
+        max-width: 85%;
         height: 345px;
 
         background: rgba(0, 0, 0, 0.22) none repeat scroll 0% 0% / auto padding-box border-box;
