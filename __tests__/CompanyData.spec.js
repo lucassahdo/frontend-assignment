@@ -36,7 +36,7 @@ describe('CompanyData', () => {
     expect(wrapper.isVueInstance()).toBeTruthy()
   })
 
-  test('initial validation of company_name is invalid', () => {
+  test('initial validation of company_name is valid. Only after save button click must check errors', () => {
     expect(!wrapper.vm.$v.invalid).toBeTruthy()    
   })
 })
