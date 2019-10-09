@@ -177,7 +177,7 @@
                                     showConfirmButton: false,
                                     timer: 2000,
                                     onClose: () => {
-                                        //that.$router.push({name: 'designs'});
+                                        // ...
                                     }
                                 }).catch(swal.noop);
                                 break;
